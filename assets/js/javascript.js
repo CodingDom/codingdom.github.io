@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+$('.scrollspy').scrollSpy({
+    throttle: 300,
+    scrollOffset: 0,
+});
+
 $("header .background").animate({"text-indent":"1.75"},{
     duration:20000,
     step: function(now,fx) {
