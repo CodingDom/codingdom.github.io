@@ -41,13 +41,38 @@ header .center {
     z-index: 5;
 }
 
+#title {
+    width: 100%;
+}
+
 header h1 {
-    margin-bottom: 0;
+    margin: 0;
 }
 
 header h3 {
     margin-top: 2px;
     color: rgb(211, 211, 211);
+}
+
+#auto-scroll {
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    top: initial;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    transform: translate(-50%, 0);
+}
+
+#auto-scroll img {
+    position: absolute;
+    left: 25%;
+}
+
+#auto-scroll p {
+    margin: 0;
+    padding-top: 50px;
 }
 
 .overlay {
@@ -75,4 +100,9 @@ section {
 
 #technologies {
     font-size: 130px;
+}
+
+.page-footer {
+    background-color: #1f1f1f;
+    border-top: 2px solid #fff;
 }

@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 $("header .background").animate({"text-indent":"1.75"},{
     duration:20000,
     step: function(now,fx) {
@@ -31,4 +33,6 @@ $("header .background").animate({"text-indent":"1.75"},{
             }
         });
     }
+});
+
 });
