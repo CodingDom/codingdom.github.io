@@ -95,17 +95,23 @@ a * {
     opacity: 0.03;
 }
 
-#tags {
-    position: relative;
-    width: 100%;
-    height: 15vh;
-}
-
 #main-content {
     position: relative;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     overflow: hidden;
+}
+
+#tags {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    margin: 0;
+    padding: 0;
+}
+
+#main-carousel {
+    height: 85% !important;
 }
 
 .content * img {

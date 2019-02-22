@@ -1,9 +1,34 @@
 $(document).ready(function() {
 
+function updateCarousel(e) {
+    if (!$(e.target).hasClass("carousel-item")) return;
+    var slider = $('#main-carousel');
+
+    if (slider.hasClass('initialized')){
+        slider.removeClass('initialized')
+    }
+
+    setTimeout(function() {
+        slider.find(".indicators").remove();
+        slider.carousel({
+            fullWidth: true,
+            indicators: true
+        }); 
+    },e.type=="DOMNodeRemoved"?100:0);
+};
+
 $('.scrollspy').scrollSpy({
     throttle: 300,
     scrollOffset: 0,
 });
+
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+});
+
+$("#main-carousel").on("DOMNodeRemoved",updateCarousel);
+$("#main-carousel").on("DOMNodeInserted",updateCarousel);
 
 $("header .background").animate({"text-indent":"1.75"},{
     duration:20000,
