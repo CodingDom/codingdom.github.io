@@ -2,6 +2,7 @@ html,body {
     width: 100%;
     height: 100%;
     margin: 0;
+    font-family: 'Acne', sans-serif;
 }
 
 body {
@@ -110,12 +111,14 @@ a * {
     -webkit-user-select: none;       
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
 }
 
 .chip {
     height: 20px;
     line-height: 20px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .chip.active {
@@ -132,7 +135,7 @@ a * {
 }
 
 .content * img {
-    border: 2px solid grey;
+    border: 2px solid white;
     border-radius: 15px;
     margin-bottom: 15px;
 }
