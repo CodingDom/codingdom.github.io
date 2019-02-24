@@ -2,6 +2,7 @@ $(document).ready(function() {
 let maxProjects = 6;
 
 function updateCarousel(e) {
+    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
     if (!$(e.target).hasClass("carousel-item")) return;
     var slider = $('#main-carousel');
 
@@ -62,6 +63,7 @@ function checkSize() {
         maxProjects = 1;
     };
     checkCarousel(maxProjects);
+    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 };
 
 $("#tags").on("click", ".chip", function(e) {
