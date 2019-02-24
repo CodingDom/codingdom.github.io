@@ -108,7 +108,7 @@ $("header .background").animate({"text-indent":"1.75"},{
     }
 });
 
-function findTags(tag) {
+function findTags() {
     const activeTags = $("#tags .active").get();
     if (activeTags.length == 0) {
         projects = projects.concat(storedProjects);
@@ -119,7 +119,9 @@ function findTags(tag) {
         
         let removalIndexes = [];
         storedProjects.forEach(function(proj) {
-            if (proj.tags.indexOf(tag.text()) == -1) return; 
+            for (let i = 0; i < activeTags.length; i++) {
+                if (proj.tags.indexOf($(activeTags[i]).text()) === -1) return;
+            };
             removalIndexes.unshift(storedProjects.indexOf(proj));
         });
         
@@ -129,7 +131,9 @@ function findTags(tag) {
         
         removalIndexes = [];
         projects.forEach(function(proj) {
-            if (proj.tags.indexOf(tag.text()) == -1) return removalIndexes.unshift(projects.indexOf(proj)); 
+            for (let i = 0; i < activeTags.length; i++) {
+                if (proj.tags.indexOf($(activeTags[i]).text()) == -1) return removalIndexes.unshift(projects.indexOf(proj))
+            };
             $("#tags .chip").get().forEach(function(elem) {
                 if (proj.tags.indexOf($(elem).text()) > -1) $(elem).css("display","inline-block");
             });
