@@ -151,6 +151,15 @@ function findTags() {
     updateCarousel(maxProjects);
 };
 
+// Function meant for toggling overlay effect on images
+$("#main-carousel").on("mouseenter mouseleave touchstart", ".content .col", function(e){
+    if(e.type == 'touchstart') {
+      $(this).off('mouseenter mouseleave');
+    };
+  
+    $(this).toggleClass("hover");
+});
+
 // Create html elements for each stored project
 projectList.forEach(function(proj) {
     proj.element = $(`<div class="col s12 m6 l4" data-score="${proj.score}">

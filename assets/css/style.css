@@ -173,7 +173,7 @@ header *, #main-content * {
     text-align: center;
 }
 
-#main-carousel:not(.scrolling) .content .col:hover .caption {
+#main-carousel:not(.scrolling) .content .col.hover .caption {
     opacity: 1;
     cursor: pointer;
 }
