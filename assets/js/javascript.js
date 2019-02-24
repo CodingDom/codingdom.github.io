@@ -182,6 +182,7 @@ $("#main-carousel").on("DOMNodeRemoved",resetCarousel);
 $("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
 checkSize();
+resetCarousel();
 $(window).on("resize", checkSize);
 
 });
