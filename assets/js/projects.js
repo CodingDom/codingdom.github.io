@@ -47,6 +47,15 @@ const projectList = [
         tags : ["HTML","CSS","JavaScript", "Game Development"],
         url : "https://codingdom.github.io/TriviaGame",
         repo : "https://github.com/CodingDom/TriviaGame"
+    },
+    {
+        name : "Liri Bot",
+        desc : "",
+        score : 5,
+        thumbnail : "https://i.imgur.com/PgDM9Ze.png",
+        preview : [],
+        tags : ["JavaScript", "Node JS", "Command Line Application"],
+        repo : "https://github.com/CodingDom/Liri-Bot"
     }
 ]
 
