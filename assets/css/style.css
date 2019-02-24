@@ -108,14 +108,17 @@ a * {
     overflow: hidden;
 }
 
-#tags {
-    position: relative;
-    margin: auto;
-    padding: 20px;
+header *, #main-content * {
     -webkit-user-select: none;       
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#tags {
+    position: relative;
+    margin: auto;
+    padding: 20px;
 }
 
 .chip {
