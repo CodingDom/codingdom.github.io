@@ -151,15 +151,6 @@ function findTags() {
     updateCarousel(maxProjects);
 };
 
-// Function meant for toggling overlay effect on images
-$("#main-carousel").on("mouseenter mouseleave touchstart", ".content .col", function(e){
-    if(e.type == 'touchstart') {
-      $(this).off('mouseenter mouseleave');
-    };
-  
-    $(this).toggleClass("hover");
-});
-
 // Create html elements for each stored project
 projectList.forEach(function(proj) {
     proj.element = $(`<div class="col s12 m6 l4" data-score="${proj.score}">
@@ -172,6 +163,23 @@ projectList.forEach(function(proj) {
         </div>
     </div>`);
     projects.push(proj);
+
+    // Function meant for toggling overlay effect on images
+    proj.element.on("mouseenter mouseleave touchstart touchend", function(e){
+        if(e.type == 'touchstart') {
+          $(this).off('mouseenter mouseleave');
+        };
+        
+        if ($("#main-carousel").hasClass("scrolling")) {
+            $("#main-carousel .col").removeClass("hover");
+        } else {
+            if (e.type == "mouseleave" || e.type == "touchend") {
+                $(this).removeClass("hover");
+            } else {
+                $(this).addClass("hover");
+            };
+        };
+    });
 });
 
 $("#tags").on("click", ".chip", function(e) {
