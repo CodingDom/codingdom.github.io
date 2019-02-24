@@ -138,10 +138,40 @@ a * {
     bottom: -50%;
 }
 
+.content .col {
+    position: relative;
+}
+
 .content * img {
     border: 2px solid white;
     border-radius: 15px;
     margin-bottom: 15px;
+}
+
+.caption {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: bolder;
+    background-color: rgba(0,0,0,0.66);
+}
+
+.caption .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#main-carousel:not(.scrolling) .content .col:hover .caption {
+    opacity: 1;
+    cursor: pointer;
 }
 
 #hidden-projects {
