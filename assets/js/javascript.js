@@ -1,7 +1,11 @@
 $(document).ready(function() {
-let maxProjects = 6;
+let projects = [];
+let storedProjects = [];
+// Maximum amount of projects abled to be displayed at once
+let maxProjects;
 
-function updateCarousel(e) {
+// Resests carousel when children are added/removed
+function resetCarousel(e) {
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
     if (!$(e.target).hasClass("carousel-item")) return;
     var slider = $('#main-carousel');
@@ -19,15 +23,13 @@ function updateCarousel(e) {
     },e.type=="DOMNodeRemoved"?10:0);
 };
 
-function checkCarousel(max) {
+// Add/remove carousel items
+function updateCarousel(max) {
     const items = $("#main-carousel .carousel-item").get();
-    const projects = $("#main-carousel .col").get();
     const currLength = items[0].children[0].children.length;
-    let currIndex = 0;
-    if (currLength == max) return;
-    console.log(currLength,max);
     const itemArray = [];
     const itemCount = Math.ceil(projects.length/max - items.length);
+
     items.forEach(function(item) {
         itemArray.push($(item));
     });
@@ -35,10 +37,11 @@ function checkCarousel(max) {
         itemArray.push($('<div class="carousel-item"><div class="row content"></div></div>'));
     };
 
+    let currIndex = 0;
     let currProj = 0;
     projects.forEach(function(proj) {
-        if (currProj%max == 0 && currProj != 0) currIndex++;
-        itemArray[currIndex].find(".row").append($(proj));
+        if (currProj%maxProjects == 0 && currProj != 0) currIndex++;
+        itemArray[currIndex].find(".row").append($(proj.element));
         currProj++;
     });
 
@@ -48,41 +51,27 @@ function checkCarousel(max) {
     });
 
     $("#main-carousel .carousel-item .row").get().forEach(function(item) {
-        if (item.children.length == 0) {
+        if (item.children.length == 0 && $("#main-carousel .carousel-item").length > 1) {
             $(item).parent().remove();
         };
     });
 };
 
+// Check window size for carousel adjustments
 function checkSize() {
+    let newMax = 1;
     if (window.innerWidth >= 993) {
-        maxProjects = 6;
+        newMax = 6;
     } else if (window.innerWidth >= 601) {
-        maxProjects = 2;
-    } else {
-        maxProjects = 1;
+        newMax = 2;
     };
-    checkCarousel(maxProjects);
+    // If already has same maximum amount of projects then stop
+    if (maxProjects == newMax) return;
+    updateCarousel(maxProjects);
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 };
 
-$("#tags").on("click", ".chip", function(e) {
-    $(e.target).toggleClass("active");
-});
-
-$('.scrollspy').scrollSpy({
-    throttle: 300,
-    scrollOffset: 0,
-});
-
-$('.carousel.carousel-slider').carousel({
-    fullWidth: true,
-    indicators: true
-});
-
-$("#main-carousel").on("DOMNodeRemoved",updateCarousel);
-$("#main-carousel").on("DOMNodeInserted",updateCarousel);
-
+// Mountain animation
 $("header .background").animate({"text-indent":"1.75"},{
     duration:20000,
     step: function(now,fx) {
@@ -118,9 +107,74 @@ $("header .background").animate({"text-indent":"1.75"},{
     }
 });
 
-projects.forEach(function(proj) {
+function findTags(tag) {
+    const activeTags = $("#tags .active").get();
+    if (activeTags.length == 0) {
+        projects = projects.concat(storedProjects);
+        storedProjects = [];
+        $("#tags .chip").css("display", "inline-block");
+    } else {    
+        $("#tags .chip:not(.active)").css("display","none");
+        
+        let removalIndexes = [];
+        storedProjects.forEach(function(proj) {
+            if (proj.tags.indexOf(tag.text()) == -1) return; 
+            removalIndexes.unshift(storedProjects.indexOf(proj));
+        });
+        
+        removalIndexes.forEach(function(index) {
+            projects = projects.concat(storedProjects.splice(index,1));
+        });
+        
+        removalIndexes = [];
+        projects.forEach(function(proj) {
+            if (proj.tags.indexOf(tag.text()) == -1) return removalIndexes.unshift(projects.indexOf(proj)); 
+            $("#tags .chip").get().forEach(function(elem) {
+                if (proj.tags.indexOf($(elem).text()) > -1) $(elem).css("display","inline-block");
+            });
+        });
 
+        removalIndexes.forEach(function(index) {
+            storedProjects = storedProjects.concat(projects.splice(index,1));
+        });
+    };
+
+    projects.sort(function(a, b){return b.score - a.score});
+
+    storedProjects.forEach(function(proj) {
+        $("#hidden-projects").append(proj.element);
+    });
+    updateCarousel(maxProjects);
+};
+
+// Create html elements for each stored project
+projectList.forEach(function(proj) {
+    proj.element = $(`<div class="col s12 m6 l4" data-score="${proj.score}">
+        <img src="${proj.thumbnail}" width="100%">
+    </div>`);
+    projects.push(proj);
 });
+
+$("#tags").on("click", ".chip", function(e) {
+    const tag = $(e.target);
+    tag.toggleClass("active");
+    findTags(tag);
+});
+
+// Animated scrolling effect
+$('.scrollspy').scrollSpy({
+    throttle: 300,
+    scrollOffset: 0,
+});
+
+// Initialize carousel
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+});
+
+$("#main-carousel").on("DOMNodeRemoved",resetCarousel);
+$("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
 checkSize();
 $(window).on("resize", checkSize);

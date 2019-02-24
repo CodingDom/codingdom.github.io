@@ -137,6 +137,10 @@ a * {
     margin-bottom: 15px;
 }
 
+#hidden-projects {
+    display: none;
+}
+
 #technologies {
     font-size: 130px;
 }
