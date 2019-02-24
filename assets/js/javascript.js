@@ -67,6 +67,7 @@ function checkSize() {
     };
     // If already has same maximum amount of projects then stop
     if (maxProjects == newMax) return;
+    maxProjects = newMax;
     updateCarousel(maxProjects);
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 };
