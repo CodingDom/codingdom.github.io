@@ -143,24 +143,25 @@ header *, #main-content * {
 
 .content .col {
     position: relative;
+    margin-bottom: 15px;
 }
 
 .content * img {
     border: 2px solid white;
     border-radius: 15px;
-    margin-bottom: 15px;
 }
 
 .caption {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 1.5rem);
+    height: 99%;
     transition: .5s ease;
     opacity: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0.75rem;
     font-weight: bolder;
     background-color: rgba(0,0,0,0.66);
+    border-radius: 15px;
 }
 
 .caption .middle {

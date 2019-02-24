@@ -156,10 +156,10 @@ function findTags() {
 projectList.forEach(function(proj) {
     proj.element = $(`<div class="col s12 m6 l4" data-score="${proj.score}">
         <img src="${proj.thumbnail}" width="100%">
-        <div class="caption">
+        <div class="caption waves-effect waves-light">
             <div class="middle">
                 <h5>${proj.name}</h5>
-                <a class="btn-floating btn-large blue pulse"><i class="fas fa-search-plus"></i></i></a>
+                <a class="btn-floating btn-large cyan pulse"><i class="fas fa-search-plus"></i></i></a>
             </div>
         </div>
     </div>`);
