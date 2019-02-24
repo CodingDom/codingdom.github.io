@@ -6,7 +6,6 @@ let maxProjects;
 
 // Resests carousel when children are added/removed
 function resetCarousel(e) {
-    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
     if (!$(e.target).hasClass("carousel-item")) return;
     var slider = $('#main-carousel');
 
@@ -65,11 +64,11 @@ function checkSize() {
     } else if (window.innerWidth >= 601) {
         newMax = 2;
     };
+    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
     // If already has same maximum amount of projects then stop
     if (maxProjects == newMax) return;
     maxProjects = newMax;
     updateCarousel(maxProjects);
-    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 };
 
 // Mountain animation
@@ -188,7 +187,6 @@ $("#main-carousel").on("DOMNodeRemoved",resetCarousel);
 $("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
 checkSize();
-$("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 $(window).on("resize", checkSize);
 
 });
