@@ -105,8 +105,6 @@ a * {
 
 #tags {
     position: relative;
-    width: 60%;
-    height: 15%;
     margin: auto;
     padding: 20px;
     -webkit-user-select: none;       
@@ -126,7 +124,11 @@ a * {
 }
 
 #main-carousel {
-    height: 85% !important;
+    overflow: visible;
+}
+
+#main-carousel .indicators {
+    bottom: -50%;
 }
 
 .content * img {
@@ -142,4 +144,14 @@ a * {
 .page-footer {
     background-color: #1f1f1f;
     border-top: 2px solid #fff;
+}
+
+@media screen and (min-width: 993px) {
+    #tags {
+        width: 60%;
+    }
+
+    #main-carousel .indicators {
+        bottom: -118%;
+    }
 }
