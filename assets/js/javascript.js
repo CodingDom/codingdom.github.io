@@ -272,9 +272,14 @@ $('.carousel.carousel-slider').carousel({
 $("#main-carousel").on("DOMNodeRemoved",resetCarousel);
 $("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
-$('.modal').modal({onCloseEnd: function() {
-    clearInterval(autoplay);
-}});
+$('.modal').modal({
+    onOpenEnd: function() {
+        checkSize();
+    },
+    onCloseEnd: function() {
+        clearInterval(autoplay);
+    }
+    });
 
 $('.slider').slider({
     indicators: false
