@@ -273,7 +273,7 @@ $("#main-carousel").on("DOMNodeRemoved",resetCarousel);
 $("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
 $('.modal').modal({
-    onOpenEnd: function() {
+    onOpenStart: function() {
         checkSize();
     },
     onCloseEnd: function() {
