@@ -4,7 +4,7 @@ const projectList = [
         desc : "",
         score : 10,
         thumbnail : "https://i.imgur.com/4xmSjGK.png",
-        preview : [],
+        preview : ["https://i.imgur.com/4xmSjGK.png","https://i.imgur.com/ilwxCcK.png","https://i.imgur.com/dwcqEnr.png"],
         tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "PHP"],
         url : "http://synstaffing.co/"
     },

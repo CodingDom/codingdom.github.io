@@ -186,9 +186,106 @@ header *, #main-content * {
     font-size: 130px;
 }
 
+.modal-exit {
+    position: absolute;
+    width: 24px;
+    top: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background-color: grey;
+}
+
+#project-modal {
+    width: 98%;
+    height: 90%;
+    max-height: unset;
+    bottom: 9%;
+    color: white;
+    overflow: hidden;
+    background-color: rgb(56, 56, 56);
+    border: 2px solid white;
+}
+
+#project-modal * {
+    overflow: hidden;
+    padding: 0;
+}
+
+#project-modal .title {
+    width: 100%;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.5);
+    text-align: center;
+}
+
+#modal-slider {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: unset;
+    max-height: calc(100% - 56px);
+}
+
+#modal-slider .slides {
+    /* position: absolute; */
+    width: 100%;
+    min-height: 100px;
+    height: unset !important;
+}
+
+/* #modal-slider .slides li {
+    height: unset;
+} */
+
+#modal-slider img {
+    max-width: 100%;
+}
+
+#project-modal .modal-content {
+    padding-right: 5px;
+}
+
+#project-modal .modal-footer {
+    background-color: rgb(85, 85, 85)
+}
+
+#project-modal .modal-footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 20px;
+}
+
+#project-modal a.url {
+    float: left;
+    color: lime;
+}
+
+#project-modal .git {
+    float: right;
+}
+
 .page-footer {
     background-color: #1f1f1f;
     border-top: 2px solid #fff;
+}
+
+@media screen and (orientation: landscape) {
+    #project-modal {
+        height: unset;
+    }
+
+    #modal-slider {
+        position: relative;
+        float: left;
+        width: 50%;
+        margin-right: 10px;
+    }
+
+    #project-modal .title {
+        width: calc(50% - 10px);
+    }
 }
 
 @media screen and (min-width: 993px) {

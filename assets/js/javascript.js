@@ -3,14 +3,15 @@ let projects = [];
 let storedProjects = [];
 // Maximum amount of projects abled to be displayed at once
 let maxProjects;
+let autoplay;
 
 // Resests carousel when children are added/removed
 function resetCarousel(e) {
     if (!$(e.target).hasClass("carousel-item")) return;
-    var slider = $('#main-carousel');
+    const slider = $('#main-carousel');
 
     if (slider.hasClass('initialized')){
-        slider.removeClass('initialized')
+        slider.removeClass('initialized');
     }
 
     setTimeout(function() {
@@ -65,6 +66,16 @@ function checkSize() {
         newMax = 2;
     };
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
+    $("#project-modal #modal-slider").css("height",$("#project-modal img").height() + 56 + "px");
+    if ($("#project-modal #modal-slider").css("float") == "left") {
+        $("#project-modal").css("height","75%");
+        $("#project-modal .modal-content").css("height",$("#project-modal img").height() + "px");
+        $("#project-modal").css("height",$("#project-modal #modal-slider").height() + 56 + "px");
+    } else {
+        $("#project-modal").css("height","90%");
+        $("#project-modal .modal-content").css("height","100%");
+    };
+    
     // If already has same maximum amount of projects then stop
     if (maxProjects == newMax) return;
     maxProjects = newMax;
@@ -162,12 +173,15 @@ projectList.forEach(function(proj) {
             </div>
         </div>
     </div>`);
+    if (proj.preview.length === 0) proj.preview=[proj.thumbnail];
     projects.push(proj);
 
     // Function meant for toggling overlay effect on images
     proj.element.on("mouseenter mouseleave touchstart touchend", function(e){
         if(e.type == 'touchstart') {
           $(this).off('mouseenter mouseleave');
+          $(this).find(".caption").removeClass("waves-lights");
+          $(this).find(".caption").addClass("waves-yellow");
         };
         
         if ($("#main-carousel").hasClass("scrolling")) {
@@ -179,6 +193,60 @@ projectList.forEach(function(proj) {
                 $(this).addClass("hover");
             };
         };
+    });
+
+    proj.element.on("click", function(e) {
+        document.getElementById('main-content').scrollIntoView();
+        $("#project-modal .title").text(proj.name);
+        $("#project-modal img").attr("src",proj.thumbnail);
+        // $("#project-modal .modal-content p").text(proj.desc);
+        $("#modal-slider").find("img").remove();
+        for (let i = $("#modal-slider .slides li").length; i > 0; i--) {
+            $($("#modal-slider .slides li").get()[i]).remove();
+        };
+        let index = 0;
+        proj.preview.forEach(function(src) {
+            const item = $("#modal-slider .slides li").get()[index]?$($("#modal-slider .slides li").get()[index]):$(`<li>`);
+            item.append(`<img src="${src}" height="auto">`);
+            $("#modal-slider .slides").append(item);
+            index++;
+        });
+
+        if (proj.url) {
+            $("#project-modal .url").css("display","block");
+            $("#project-modal .url").attr("href",proj.url);
+            // $("#project-modal .url").text("URL: " + proj.url);
+        } else {
+            $("#project-modal .url").css("display","none");
+        };
+        if (proj.repo) {
+            $("#project-modal .git").css("display","block");
+            $("#project-modal .git").attr("href",proj.repo+"#readme");
+        } else {
+            $("#project-modal .git").css("display","none");
+        };
+        $('#project-modal').modal("open");
+
+        const slider = $('#modal-slider');
+        const originWidth = $("#modal-slider img").get()[0].naturalWidth;
+        const originHeight = $("#modal-slider img").get()[0].naturalHeight;
+        const scaleY = ($("#modal-slider img").width()/originWidth)*originHeight;
+
+        if (slider.hasClass('initialized')){
+            slider.removeClass('initialized');
+        }
+
+        slider.slider({
+            indicators: false,
+            // height: "100%"
+        });
+
+        let i = 0;
+        $("#modal-slider img").get().forEach(function(img) {
+            $(img).attr("src",proj.preview[i]);
+            i++;
+        })
+        checkSize();
     });
 });
 
@@ -200,8 +268,19 @@ $('.carousel.carousel-slider').carousel({
     indicators: true
 });
 
+
 $("#main-carousel").on("DOMNodeRemoved",resetCarousel);
 $("#main-carousel").on("DOMNodeInserted",resetCarousel);
+
+$('.modal').modal({onCloseEnd: function() {
+    clearInterval(autoplay);
+}});
+
+$('.slider').slider({
+    indicators: false
+});
+
+
 
 checkSize();
 $(window).on("resize", checkSize);
