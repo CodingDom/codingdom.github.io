@@ -160,6 +160,7 @@ function findTags() {
         $("#hidden-projects").append(proj.element);
     });
     updateCarousel(maxProjects);
+    $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
 };
 
 // Create html elements for each stored project
