@@ -223,7 +223,7 @@ header *, #main-content * {
     width: 100%;
     bottom: 0;
     top: unset;
-    max-height: calc(100% - 56px);
+    /* max-height: calc(100% - 56px); */
 }
 
 #modal-slider .slides {

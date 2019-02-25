@@ -66,7 +66,7 @@ function checkSize() {
         newMax = 2;
     };
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
-    $("#project-modal #modal-slider").css("height",$("#project-modal img").height() + 56 + "px");
+    $("#project-modal #modal-slider").css("height",$("#project-modal img").height() + "px");
     if ($("#project-modal #modal-slider").css("float") == "left") {
         $("#project-modal").css("height","75%");
         $("#project-modal .modal-content").css("height",$("#project-modal img").height() + "px");
