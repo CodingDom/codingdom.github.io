@@ -1,6 +1,6 @@
 const projectList = [
     {
-        name : "Synergy Staffing Solutions",
+        name : "Synergy Staffing",
         desc : "",
         score : 10,
         thumbnail : "https://i.imgur.com/4xmSjGK.png",
@@ -20,7 +20,7 @@ const projectList = [
     },
     {
         name : "Troll RPG",
-        desc : "",
+        desc : "Troll RPG is a basic fighting/strategy game based on a war between four tribes. The goal is to conquer the other tribes by defeating their toughest warriors. If attacks aren't planned accordingly then your tribe may wind up on the losing end.",
         score : 5.5,
         thumbnail : "https://i.imgur.com/kTWLNKL.png",
         preview : ["https://i.imgur.com/2bskYBL.png","https://i.imgur.com/kTWLNKL.png","https://i.imgur.com/7zeUF4U.png"],
@@ -40,7 +40,7 @@ const projectList = [
     },
     {
         name : "Horror Trivia",
-        desc : "",
+        desc : `Horror Trivia is a quiz game based on classic horror film series such as "Child's Play". Each question has a set time limit of 30 seconds, along with thriller sound effects and a creepy ambience to set the mood. Once all of the questions are answered, the user is then prompted with their score along with a special surprise at the end for failures..`,
         score : 2.25,
         thumbnail : "https://i.imgur.com/7nyCBEI.png",
         preview : ["https://i.imgur.com/wXqqZY5.png","https://i.imgur.com/sgY15bJ.png","https://i.imgur.com/M7FnMah.png"],
@@ -50,7 +50,7 @@ const projectList = [
     },
     {
         name : "Guess The Classic",
-        desc : "",
+        desc : "Guess The Classic is a hangman game based on Michael Jackon's musical catalog. Each round uses a Michael Jackson song from the game's file storage. Upon winning a round, the correctly guessed song will play while displaying it's cover art. The game utilizes an html canvas in order to create the hangman doll's body part for each incorrect guess. Once the body is fully formed, the player loses.",
         score : 2,
         thumbnail : "https://i.imgur.com/e32Kgu3.png",
         preview : [],
@@ -59,7 +59,7 @@ const projectList = [
     },
     {
         name : "Bamazon",
-        desc : "",
+        desc : "Bamazon is a command-line application based on amazon's functionality. This tool is uses a MySql and Node Js in order to make purchases, add products, restock inventory, and track sales",
         score : 0.25,
         thumbnail : "https://i.imgur.com/HRKjTbV.png",
         preview : [],
@@ -68,7 +68,7 @@ const projectList = [
     },
     {
         name : "Constructor Word Guess Game",
-        desc : "",
+        desc : "Constructor Word Guess is a word guess game built within a command line application. There are a variety of categories to choose from. Along with plenty of words to be guessed for each one.",
         score : 0.2,
         thumbnail : "https://i.imgur.com/II4lg2i.png",
         preview : [],
@@ -77,7 +77,7 @@ const projectList = [
     },
     {
         name : "Liri Bot",
-        desc : "",
+        desc : "Liri Bot is a command-line application with a variety of features. This tool is used to perform multiple searches on a variety of interests for entertainment purposes.",
         score : 0,
         thumbnail : "https://i.imgur.com/PgDM9Ze.png",
         preview : [],

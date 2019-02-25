@@ -6,25 +6,25 @@ let maxProjects;
 let autoplay;
 
 let imageURLs = [];
+const loremText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae dui nec eros auctor eleifend sit amet vel ex. Sed in turpis quis enim accumsan varius et porttitor odio.";
 
 // Image preloader for slideshow
 function preloadImages(urls, allImagesLoadedCallback){
     var loadedCounter = 0;
-  var toBeLoadedNumber = urls.length;
-  urls.forEach(function(url){
-    preloadImage(url, function(){
-        loadedCounter++;
-            console.log('Number of loaded images: ' + loadedCounter);
-      if(loadedCounter == toBeLoadedNumber){
-        allImagesLoadedCallback();
-      }
+    var toBeLoadedNumber = urls.length;
+    urls.forEach(function(url){
+        preloadImage(url, function(){
+            loadedCounter++;
+        if(loadedCounter == toBeLoadedNumber){
+            allImagesLoadedCallback();
+        }
+        });
     });
-  });
-  function preloadImage(url, anImageLoadedCallback){
-      var img = new Image();
-      img.onload = anImageLoadedCallback;
-      img.src = url;
-  }
+    function preloadImage(url, anImageLoadedCallback){
+        var img = new Image();
+        img.onload = anImageLoadedCallback;
+        img.src = url;
+    }
 }
 
 // Resests carousel when children are added/removed
@@ -79,14 +79,7 @@ function updateCarousel(max) {
     });
 };
 
-// Check window size for carousel adjustments
-function checkSize() {
-    let newMax = 1;
-    if (window.innerWidth >= 993) {
-        newMax = 6;
-    } else if (window.innerWidth >= 601) {
-        newMax = 2;
-    };
+function adjustSlides() {
     $("#main-carousel .indicators").css("bottom",($("#main-carousel").height()-($("#main-carousel .row").height())-$("#main-carousel .indicators").height()+30)+"px");
     $("#project-modal #modal-slider").css("height",$("#project-modal img").height() + "px");
     if ($("#project-modal #modal-slider").css("float") == "left") {
@@ -97,7 +90,17 @@ function checkSize() {
         $("#project-modal").css("height","90%");
         $("#project-modal .modal-content").css("height","100%");
     };
-    
+}
+
+// Check window size for carousel adjustments
+function checkSize() {
+    let newMax = 1;
+    if (window.innerWidth >= 993) {
+        newMax = 6;
+    } else if (window.innerWidth >= 601) {
+        newMax = 2;
+    };
+    adjustSlides()
     // If already has same maximum amount of projects then stop
     if (maxProjects == newMax) return;
     maxProjects = newMax;
@@ -162,12 +165,12 @@ projectList.forEach(function(proj) {
         </div>
     </div>`);
     if (proj.preview.length === 0) proj.preview=[proj.thumbnail];
+    if (proj.desc == "") proj.desc = loremText;
     projects.push(proj);
     imageURLs = imageURLs.concat(proj.preview);
     // Function meant for toggling overlay effect on images
     proj.element.on("mouseenter mouseleave touchstart touchend", function(e){
         if(e.type == 'touchstart') {
-          $(this).off('mouseenter mouseleave');
           $(this).find(".caption").removeClass("waves-lights");
           $(this).find(".caption").addClass("waves-yellow");
         };
@@ -187,7 +190,7 @@ projectList.forEach(function(proj) {
         document.getElementById('main-content').scrollIntoView();
         $("#project-modal .title").text(proj.name);
         $("#project-modal img").attr("src",proj.thumbnail);
-        // $("#project-modal .modal-content p").text(proj.desc);
+        $("#project-modal .modal-content p").text(proj.desc);
         $("#modal-slider").find("img").remove();
         for (let i = $("#modal-slider .slides li").length; i > 0; i--) {
             $($("#modal-slider .slides li").get()[i]).remove();
@@ -232,7 +235,7 @@ projectList.forEach(function(proj) {
             $(img).attr("src",proj.preview[i]);
             i++;
         })
-        checkSize();
+        adjustSlides()
     });
 });
 
@@ -264,11 +267,11 @@ $("#main-carousel").on("DOMNodeInserted",resetCarousel);
 
 $('.modal').modal({
     onOpenStart: function() {
-        checkSize();
+        adjustSlides()
     },
     onOpenEnd: function() {
         if ($("#modal-slider").height() == 0) {
-            checkSize();
+            adjustSlides()
         }
     },
     onCloseEnd: function() {
@@ -284,6 +287,7 @@ $('.slider').slider({
 
 checkSize();
 $(window).on("resize", checkSize);
+$(window).on("orientationchange", checkSize);
 
 // Mountain animation
 $("header .background").animate({"text-indent":"1.75"},{

@@ -241,6 +241,10 @@ header *, #main-content * {
     max-height: calc(100% - 56px);
 }
 
+#project-modal .modal-content p {
+    text-overflow: ellipsis;
+}
+
 #project-modal .modal-content p, #project-modal .modal-content .title {
     padding-left: 5px;
 }
