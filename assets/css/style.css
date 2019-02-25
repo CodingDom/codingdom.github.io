@@ -223,19 +223,14 @@ header *, #main-content * {
     width: 100%;
     bottom: 0;
     top: unset;
-    /* max-height: calc(100% - 56px); */
 }
 
 #modal-slider .slides {
-    /* position: absolute; */
     width: 100%;
     min-height: 100px;
     height: unset !important;
 }
 
-/* #modal-slider .slides li {
-    height: unset;
-} */
 
 #modal-slider img {
     max-width: 100%;
@@ -243,6 +238,11 @@ header *, #main-content * {
 
 #project-modal .modal-content {
     padding-right: 5px;
+    max-height: calc(100% - 56px);
+}
+
+#project-modal .modal-content p, #project-modal .modal-content .title {
+    padding-left: 5px;
 }
 
 #project-modal .modal-footer {
