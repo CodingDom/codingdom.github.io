@@ -23,7 +23,7 @@ const projectList = [
         desc : "",
         score : 5.5,
         thumbnail : "https://i.imgur.com/kTWLNKL.png",
-        preview : [],
+        preview : ["https://i.imgur.com/2bskYBL.png","https://i.imgur.com/kTWLNKL.png","https://i.imgur.com/7zeUF4U.png"],
         tags : ["HTML","CSS","JavaScript", "Game Development"],
         url : "https://codingdom.github.io/Troll-RPG",
         repo : "https://github.com/CodingDom/Troll-RPG"
@@ -32,8 +32,8 @@ const projectList = [
         name : "Shell Game",
         desc : "",
         score : 2.5,
-        thumbnail : "https://i.imgur.com/qKPbsH6.png",
-        preview : [],
+        thumbnail : "https://i.imgur.com/JiZHubR.png",
+        preview : ["https://i.imgur.com/JiZHubR.png","https://i.imgur.com/qKPbsH6.png","https://i.imgur.com/dd6KidY.png"],
         tags : ["HTML","CSS","JavaScript", "Game Development"],
         url : "https://codingdom.github.io/Shell-Game",
         repo : "https://github.com/CodingDom/Shell-Game"
@@ -43,7 +43,7 @@ const projectList = [
         desc : "",
         score : 2.25,
         thumbnail : "https://i.imgur.com/7nyCBEI.png",
-        preview : [],
+        preview : ["https://i.imgur.com/wXqqZY5.png","https://i.imgur.com/sgY15bJ.png","https://i.imgur.com/M7FnMah.png"],
         tags : ["HTML","CSS","JavaScript", "Game Development"],
         url : "https://codingdom.github.io/TriviaGame",
         repo : "https://github.com/CodingDom/TriviaGame"

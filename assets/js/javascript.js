@@ -5,6 +5,28 @@ let storedProjects = [];
 let maxProjects;
 let autoplay;
 
+let imageURLs = [];
+
+// Image preloader for slideshow
+function preloadImages(urls, allImagesLoadedCallback){
+    var loadedCounter = 0;
+  var toBeLoadedNumber = urls.length;
+  urls.forEach(function(url){
+    preloadImage(url, function(){
+        loadedCounter++;
+            console.log('Number of loaded images: ' + loadedCounter);
+      if(loadedCounter == toBeLoadedNumber){
+        allImagesLoadedCallback();
+      }
+    });
+  });
+  function preloadImage(url, anImageLoadedCallback){
+      var img = new Image();
+      img.onload = anImageLoadedCallback;
+      img.src = url;
+  }
+}
+
 // Resests carousel when children are added/removed
 function resetCarousel(e) {
     if (!$(e.target).hasClass("carousel-item")) return;
@@ -82,42 +104,7 @@ function checkSize() {
     updateCarousel(maxProjects);
 };
 
-// Mountain animation
-$("header .background").animate({"text-indent":"1.75"},{
-    duration:20000,
-    step: function(now,fx) {
-        $(this).css("transform","scale(" + now + ")");
-    },
-    complete:function() {
-        $(this).css("text-indent","0");
-        $(this).animate({"text-indent":"10"},{
-            duration:15000,
-            step: function(now,fx) {
-                $(this).css("transform","scale(1.75) translate(" + now + "vw)");
-            },
-            complete:function() {
-                $(this).animate({"text-indent":"-10"},{
-                    duration:15000,
-                    step: function(now,fx) {
-                        $(this).css("transform","scale(1.75) translate(" + now + "vw)");
-                    },
-                    complete:function() {
-                        $(this).animate({"text-indent":"0"},{
-                            duration:15000,
-                            step: function(now,fx) {
-                                $(this).css("transform","scale(" + Math.max(Math.min(1.75,1.75-((1/(Math.abs(now)))*0.75)),1) + ") translate(" + now + "vw)");
-                            },
-                            complete:function() {
-                                
-                            }
-                        }); 
-                    }
-                });    
-            }
-        });
-    }
-});
-
+// Function for Skills/Technology filtering of projects
 function findTags() {
     const activeTags = $("#tags .active").get();
     if (activeTags.length == 0) {
@@ -176,7 +163,7 @@ projectList.forEach(function(proj) {
     </div>`);
     if (proj.preview.length === 0) proj.preview=[proj.thumbnail];
     projects.push(proj);
-
+    imageURLs = imageURLs.concat(proj.preview);
     // Function meant for toggling overlay effect on images
     proj.element.on("mouseenter mouseleave touchstart touchend", function(e){
         if(e.type == 'touchstart') {
@@ -216,7 +203,6 @@ projectList.forEach(function(proj) {
         if (proj.url) {
             $("#project-modal .url").css("display","block");
             $("#project-modal .url").attr("href",proj.url);
-            // $("#project-modal .url").text("URL: " + proj.url);
         } else {
             $("#project-modal .url").css("display","none");
         };
@@ -238,8 +224,7 @@ projectList.forEach(function(proj) {
         }
 
         slider.slider({
-            indicators: false,
-            // height: "100%"
+            indicators: false
         });
 
         let i = 0;
@@ -249,6 +234,10 @@ projectList.forEach(function(proj) {
         })
         checkSize();
     });
+});
+
+preloadImages(imageURLs, function(){
+    console.log('All images were loaded');
 });
 
 $("#tags").on("click", ".chip", function(e) {
@@ -277,6 +266,11 @@ $('.modal').modal({
     onOpenStart: function() {
         checkSize();
     },
+    onOpenEnd: function() {
+        if ($("#modal-slider").height() == 0) {
+            checkSize();
+        }
+    },
     onCloseEnd: function() {
         clearInterval(autoplay);
     }
@@ -290,5 +284,38 @@ $('.slider').slider({
 
 checkSize();
 $(window).on("resize", checkSize);
+
+// Mountain animation
+$("header .background").animate({"text-indent":"1.75"},{
+    duration:20000,
+    step: function(now,fx) {
+        $(this).css("transform","scale(" + now + ")");
+    },
+    complete:function() {
+        $(this).css("text-indent","0");
+        $(this).animate({"text-indent":"10"},{
+            duration:15000,
+            step: function(now,fx) {
+                $(this).css("transform","scale(1.75) translate(" + now + "vw)");
+            },
+            complete:function() {
+                $(this).animate({"text-indent":"-10"},{
+                    duration:15000,
+                    step: function(now,fx) {
+                        $(this).css("transform","scale(1.75) translate(" + now + "vw)");
+                    },
+                    complete:function() {
+                        $(this).animate({"text-indent":"0"},{
+                            duration:15000,
+                            step: function(now,fx) {
+                                $(this).css("transform","scale(" + Math.max(Math.min(1.75,1.75-((1/(Math.abs(now)))*0.75)),1) + ") translate(" + now + "vw)");
+                            }
+                        }); 
+                    }
+                });    
+            }
+        });
+    }
+});
 
 });
