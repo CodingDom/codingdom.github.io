@@ -1,7 +1,7 @@
 const projectList = [
     {
         name : "Synergy Staffing",
-        desc : "",
+        desc : "Synergy Staffing Solutions needed a landing page developed in order to advertise their services to a wider audience.",
         score : 10,
         thumbnail : "https://i.imgur.com/4xmSjGK.png",
         preview : ["https://i.imgur.com/4xmSjGK.png","https://i.imgur.com/ilwxCcK.png","https://i.imgur.com/dwcqEnr.png"],
@@ -9,14 +9,44 @@ const projectList = [
         url : "http://synstaffing.co/"
     },
     {
+        name : "Code Red",
+        desc : "Code Red is a web based app that is a one stop coding/programming resource. Users can search through Youtube, Reddit and Stack Overflow to answer any questions they have in regards to coding.",
+        score : 7,
+        thumbnail : "https://i.imgur.com/Ift1XO2.png",
+        preview : ["https://i.imgur.com/Ift1XO2.png"],
+        tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Node JS", "Express JS", "Express Handlebars", "MySQL"],
+        url : "https://rocky-ravine-34618.herokuapp.com/login",
+        repo : "https://github.com/CodingDom/Code-Red"
+    },
+    {
         name : "Treasure Quest",
-        desc : "",
-        score : 6,
+        desc : "Treasure Quest is a game for hunting hidden treasures along with friends. Take a picture of an object in a park along with some clues to have your friends try and figure out what the hidden treasure is.",
+        score : 6.5,
         thumbnail : "https://i.imgur.com/fFuAPHU.png",
         preview : [],
         tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Firebase", "Game Development"],
         url : "https://codingdom.github.io/Treasure-Quest",
         repo : "https://github.com/CodingDom/Treasure-Quest"
+    },
+    {
+        name : "Lion King Memory Game",
+        desc : "This React based web application is meant to test your memorization skills in fun way by checking if you can maintain the order in which you have selected your favorite Lion King characters.",
+        score : 6,
+        thumbnail : "https://i.imgur.com/4hPCooV.png",
+        preview : ["https://i.imgur.com/u5bSRCy.png"],
+        tags : ["HTML","CSS", "Bootstrap","JavaScript", "Node JS", "React JS", "Game Development"],
+        url : "https://codingdom.github.io/Memory-Game",
+        repo : "https://github.com/CodingDom/Memory-Game"
+    },
+    {
+        name : "Friend Finder",
+        desc : "Friend Finder is a friend matchingmaking web application. After taking a brief survey the user is prompted with their most compatible friend along with how closely matched the two are.",
+        score : 5.75,
+        thumbnail : "https://i.imgur.com/SJX5bBL.png",
+        preview : ["https://i.imgur.com/SJX5bBL.png","https://i.imgur.com/n1kuCMk.png","https://i.imgur.com/zBlNChS.png"],
+        tags : ["HTML","CSS", "Materialize","JavaScript", "JQuery", "Node JS", "Express JS"],
+        url : "https://dom-friend-finder.herokuapp.com",
+        repo : "https://github.com/CodingDom/Friend-Finder"
     },
     {
         name : "Troll RPG",
@@ -30,13 +60,23 @@ const projectList = [
     },
     {
         name : "Shell Game",
-        desc : "",
+        desc : "The Shell Game is a classic eye coordination/memory game. Users place bets then try to guess which shell has the pearl in it.",
         score : 2.5,
         thumbnail : "https://i.imgur.com/JiZHubR.png",
         preview : ["https://i.imgur.com/JiZHubR.png","https://i.imgur.com/qKPbsH6.png","https://i.imgur.com/dd6KidY.png"],
         tags : ["HTML","CSS","JavaScript", "Game Development"],
         url : "https://codingdom.github.io/Shell-Game",
         repo : "https://github.com/CodingDom/Shell-Game"
+    },
+    {
+        name : "Cookie Eater",
+        desc : "Cookie Eater is a DataBase Interface/CRUD application made for storing information on cookie consumption.",
+        score : 2.3,
+        thumbnail : "https://i.imgur.com/yam0zkd.png",
+        preview : ["https://i.imgur.com/yam0zkd.png","https://i.imgur.com/rYf3jv3.png","https://i.imgur.com/rzenpEv.png"],
+        tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Node JS", "MySQL"],
+        url : "https://cookie-eater.herokuapp.com",
+        repo : "https://github.com/CodingDom/Cookie-Eater"
     },
     {
         name : "Horror Trivia",
