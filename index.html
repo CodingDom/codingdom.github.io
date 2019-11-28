@@ -31,10 +31,14 @@
                 <div class="chip">CSS</div>
                 <div class="chip">JavaScript</div>
                 <div class="chip">JQuery</div>
+                <div class="chip">React</div>
+                <div class="chip">Angular</div>
+                <div class="chip">Express JS</div>
                 <div class="chip">Node JS</div>
                 <div class="chip">PHP</div>
                 <div class="chip">Firebase</div>
                 <div class="chip">MySQL</div>
+                <div class="chip">NoSQL</div>
                 <div class="chip">Command Line Application</div>
                 <div class="chip">Game Development</div>
             </div>
@@ -46,6 +50,7 @@
             </div>
             <div id="hidden-projects"></div>
             <div id="project-modal" class="modal modal-fixed-footer">
+                <button id="description-change" class="btn red">View Technologies</button>
                 <div class="modal-content">
                     <div id="modal-slider" class="slider center">
                         <ul class="slides">
@@ -54,7 +59,9 @@
                     </div>
                     <h4 class="title"></h4>
                     <tr></tr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae dui nec eros auctor eleifend sit amet vel ex. Sed in turpis quis enim accumsan varius et porttitor odio.</p>
+                    <div class="modal-text-holder">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae dui nec eros auctor eleifend sit amet vel ex. Sed in turpis quis enim accumsan varius et porttitor odio.</p>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a class="url" target="_blank">LIVE DEMO</a>
@@ -86,6 +93,8 @@
           </div>
         </div>
       </footer>  
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/projects.js"></script>

@@ -126,6 +126,7 @@ header *, #main-content * {
     line-height: 20px;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .chip.active {
@@ -200,9 +201,9 @@ header *, #main-content * {
     width: 98%;
     height: 90%;
     max-height: unset;
-    bottom: 9%;
+    bottom: 2%;
     color: white;
-    overflow: hidden;
+    overflow: visible;
     background-color: rgb(56, 56, 56);
     border: 2px solid white;
 }
@@ -212,8 +213,16 @@ header *, #main-content * {
     padding: 0;
 }
 
+#description-change {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    right: 0;
+    padding: 0 6px;
+}
+
 #project-modal .title {
     width: 100%;
+    margin-bottom: 0;
     border-bottom: 2px solid rgba(128, 128, 128, 0.5);
     text-align: center;
 }
@@ -239,6 +248,10 @@ header *, #main-content * {
 #project-modal .modal-content {
     padding-right: 5px;
     max-height: calc(100% - 56px);
+}
+
+#project-modal .modal-text-holder {
+    overflow: auto;
 }
 
 #project-modal .modal-content p {
@@ -278,6 +291,7 @@ header *, #main-content * {
 @media screen and (orientation: landscape) {
     #project-modal {
         height: unset;
+        bottom: 9%;
     }
 
     #modal-slider {

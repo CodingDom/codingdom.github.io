@@ -1,4 +1,24 @@
-const projectList = [
+const oldProjectList = [
+    {
+        name : "Glam Me",
+        desc : "Glam Me is an on-call beauty service that offers licensed technicians to the masses, created by using a MERN Stack.",
+        score : 20,
+        thumbnail : "https://i.imgur.com/fxXjxfT.png",
+        preview : ["https://i.imgur.com/fxXjxfT.png","https://i.imgur.com/K20TzIM.png","https://i.imgur.com/DOyZkbw.png"],
+        tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Node JS", "Express JS", "React JS", "NoSQL", "MongoDB"],
+        url : "https://glamme.herokuapp.com/",
+        repo : "https://github.com/CodingDom/Glam-Me"
+    },
+    {
+        name : "Code Red",
+        desc : "Code Red is a web based app that is a one stop coding/programming resource. Users can search through Youtube, Reddit and Stack Overflow to answer any questions they have in regards to coding.",
+        score : 15,
+        thumbnail : "https://i.imgur.com/Ift1XO2.png",
+        preview : ["https://i.imgur.com/Ift1XO2.png"],
+        tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Node JS", "Express JS", "Express Handlebars", "MySQL"],
+        url : "https://rocky-ravine-34618.herokuapp.com/login",
+        repo : "https://github.com/CodingDom/Code-Red"
+    },
     {
         name : "Synergy Staffing",
         desc : "Synergy Staffing Solutions needed a landing page developed in order to advertise their services to a wider audience.",
@@ -7,16 +27,6 @@ const projectList = [
         preview : ["https://i.imgur.com/4xmSjGK.png","https://i.imgur.com/ilwxCcK.png","https://i.imgur.com/dwcqEnr.png"],
         tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "PHP"],
         url : "http://synstaffing.co/"
-    },
-    {
-        name : "Code Red",
-        desc : "Code Red is a web based app that is a one stop coding/programming resource. Users can search through Youtube, Reddit and Stack Overflow to answer any questions they have in regards to coding.",
-        score : 7,
-        thumbnail : "https://i.imgur.com/Ift1XO2.png",
-        preview : ["https://i.imgur.com/Ift1XO2.png"],
-        tags : ["HTML","CSS", "Bootstrap","JavaScript", "JQuery", "Node JS", "Express JS", "Express Handlebars", "MySQL"],
-        url : "https://rocky-ravine-34618.herokuapp.com/login",
-        repo : "https://github.com/CodingDom/Code-Red"
     },
     {
         name : "Treasure Quest",
@@ -125,5 +135,3 @@ const projectList = [
         repo : "https://github.com/CodingDom/Liri-Bot"
     }
 ]
-
-projectList.sort(function(a, b){return b.score - a.score});
